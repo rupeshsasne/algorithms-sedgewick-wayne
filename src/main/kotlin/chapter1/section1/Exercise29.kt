@@ -30,3 +30,22 @@ fun IntArray.lessThanKey(key: Int): Int {
         insertionIndex
     }
 }
+
+fun IntArray.equalsToKey(key: Int): Int {
+    val insertionIndex = this.binarySearch(key)
+
+    return if (insertionIndex < 0) {
+        0
+    } else {
+        var count = 0
+        var trav = insertionIndex
+
+        while (this[trav++] == key) count++
+
+        trav = insertionIndex
+
+        while (this[--trav] == key) count++
+
+        count
+    }
+}
