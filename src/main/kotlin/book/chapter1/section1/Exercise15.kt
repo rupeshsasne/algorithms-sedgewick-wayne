@@ -1,4 +1,4 @@
-package chapter1.section1
+package book.chapter1.section1
 
 fun histogram(a: IntArray, m: Int): IntArray {
     val result = IntArray(m)

@@ -1,4 +1,4 @@
-package chapter1.section1
+package book.chapter1.section1
 
 import edu.princeton.cs.algs4.StdOut
 

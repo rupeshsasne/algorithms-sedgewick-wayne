@@ -1,4 +1,4 @@
-package chapter1.section1
+package book.chapter1.section1
 
 fun gcd(p: Int, q: Int): Int {
     if (q == 0) return p

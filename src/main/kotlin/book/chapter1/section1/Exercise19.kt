@@ -1,4 +1,4 @@
-package chapter1.section1
+package book.chapter1.section1
 
 fun fibRecursive(n: Int): Int {
     if (n == 0) return 0

@@ -1,4 +1,4 @@
-package chapter1.section1
+package book.chapter1.section1
 
 import org.junit.jupiter.api.Assertions.assertArrayEquals
 import org.junit.jupiter.api.Test
