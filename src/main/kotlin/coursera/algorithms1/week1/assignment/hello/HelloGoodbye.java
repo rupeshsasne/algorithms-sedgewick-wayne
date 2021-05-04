@@ -4,7 +4,7 @@
  *  Last modified:     May 3, 2021
  *****************************************************************************/
 
-package classroom.week1.assignment;
+package coursera.algorithms1.week1.assignment.hello;
 
 import edu.princeton.cs.algs4.StdOut;
 
