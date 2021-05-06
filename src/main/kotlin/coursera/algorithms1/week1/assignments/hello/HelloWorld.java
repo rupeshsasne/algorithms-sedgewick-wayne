@@ -4,7 +4,7 @@
  *  Last modified:     May 3, 2021
  *****************************************************************************/
 
-package coursera.algorithms1.week1.assignment.hello;
+package coursera.algorithms1.week1.assignments.hello;
 
 public class HelloWorld {
     public static void main(String[] args) {
