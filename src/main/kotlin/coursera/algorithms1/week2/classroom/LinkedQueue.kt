@@ -2,7 +2,7 @@ package coursera.algorithms1.week2.classroom
 
 import java.lang.RuntimeException
 
-class LinkedQueue<T> {
+class LinkedQueue<T> : Iterable<T?> {
 
     class EmptyQueueException : RuntimeException()
 
@@ -44,5 +44,20 @@ class LinkedQueue<T> {
             tail = null
 
         return node?.data
+    }
+
+    override fun iterator(): Iterator<T?> {
+        return object : Iterator<T?> {
+            private var curr = head
+
+            override fun hasNext(): Boolean =
+                curr != null
+
+            override fun next(): T? {
+                val data = curr?.data
+                curr = curr?.next
+                return data
+            }
+        }
     }
 }
