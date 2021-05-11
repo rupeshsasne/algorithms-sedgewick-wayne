@@ -20,10 +20,13 @@ fun <T> Array<T>.selectionSort(comparator: Comparator<T>) {
     }
 }
 
-fun main() {
-    val array = arrayOf(10, 6, 3, 7, 9, 1, 0, 2, 4, 5)
-
-    array.selectionSort { t1, t2 -> t1 - t2 }
-
-    println(array.joinToString())
+fun <T> Array<T>.insertionSort(comparator: Comparator<T>) {
+    for (i in 0..lastIndex) {
+        for (j in i downTo 1) {
+            if (comparator.compare(this[j - 1], this[j]) > 0)
+                swap(j - 1, j)
+            else
+                break
+        }
+    }
 }
