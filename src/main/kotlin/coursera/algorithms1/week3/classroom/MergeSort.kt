@@ -1,5 +1,6 @@
 package coursera.algorithms1.week3.classroom
 
+
 fun <T> merge(arr: Array<T>, aux: Array<T>, lo: Int, mid: Int, hi: Int, comparator: Comparator<T>) {
     for (i in lo..hi) {
         aux[i] = arr[i]
@@ -19,24 +20,41 @@ fun <T> merge(arr: Array<T>, aux: Array<T>, lo: Int, mid: Int, hi: Int, comparat
     }
 }
 
-fun <T> sort(arr: Array<T>, aux: Array<T>, lo: Int, hi: Int, comparator: Comparator<T>) {
+fun <T> mergeSort(arr: Array<T>, aux: Array<T>, lo: Int, hi: Int, comparator: Comparator<T>) {
     if (hi <= lo) return
 
     val mid = lo + (hi - lo) / 2
 
-    sort(arr, aux, lo, mid, comparator)
-    sort(arr, aux, mid + 1, hi, comparator)
+    mergeSort(arr, aux, lo, mid, comparator)
+    mergeSort(arr, aux, mid + 1, hi, comparator)
 
     merge(arr, aux, lo, mid, hi, comparator)
 }
 
-inline fun <reified T> sort(arr: Array<T>, comparator: Comparator<T>) {
+inline fun <reified T> mergeSort(arr: Array<T>, comparator: Comparator<T>) {
     val aux = Array(arr.size) { arr[it] }
-    sort(arr, aux, 0, arr.lastIndex, comparator)
+    mergeSort(arr, aux, 0, arr.lastIndex, comparator)
+}
+
+inline fun <reified T> mergeSortIterative(arr: Array<T>, comparator: Comparator<T>) {
+
+    val aux = Array(arr.size) { arr[it] }
+    var sz = 1
+
+    while (sz < arr.size) {
+        var lo = 0
+
+        while (lo < arr.size - sz) {
+            merge(arr, aux, lo, lo + sz - 1, (lo + sz + sz - 1).coerceAtMost(arr.lastIndex), comparator)
+            lo += sz + sz
+        }
+
+        sz += sz
+    }
 }
 
 fun main() {
     val arr = arrayOf(4, 5, 1, 2, 8, 9, 0, 10)
-    sort(arr) { a, b -> a - b }
+    mergeSortIterative(arr) { a, b -> a - b }
     println(arr.joinToString())
 }
