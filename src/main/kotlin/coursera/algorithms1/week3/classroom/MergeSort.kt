@@ -1,5 +1,26 @@
 package coursera.algorithms1.week3.classroom
 
+inline fun <reified T> mergeWithSmallerAux(arr: Array<T>, lo: Int, mid: Int, hi: Int, comparator: Comparator<T>) {
+    val aux = Array(((hi - lo) / 2)) { arr[lo + it] }
+
+    var i = lo
+    var j = mid + 1
+
+    var k = lo
+
+    while (i <= mid && j <= hi) {
+        if (comparator.compare(aux[i], arr[j]) > 0)
+            arr[k++] = arr[j++]
+        else
+            arr[k++] = aux[i++]
+    }
+
+    while (i <= mid)
+        arr[k++] = aux[i++]
+
+    while (j <= hi)
+        arr[k++] = arr[j++]
+}
 
 fun <T> merge(arr: Array<T>, aux: Array<T>, lo: Int, mid: Int, hi: Int, comparator: Comparator<T>) {
     for (i in lo..hi) {
